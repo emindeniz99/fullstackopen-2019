@@ -1,0 +1,12 @@
+note over browser:
+on SPA version
+end note
+
+note over browser:
+write down note and push the button to send note
+end note
+note over browser:
+Browser executes newNote, adds newNote to notes and redraws notes, and sends to server
+end note
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server-->browser: 201 Created {"message":"note created"}
