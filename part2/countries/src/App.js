@@ -66,17 +66,17 @@ const Country = ({ country }) => {
 	useEffect(() => {
 		axios
 			.get(
-				"http://api.apixu.com/v1/current.json?key=751b48b2301741869f183215192408&q=" +
+				"http://api.weatherstack.com/current?access_key=d2b7ab7e41516681c9157aee964036cf&query=" + // optional todo - hide the key with .env  
 					country.capital
 			)
 			.then(response => {
 				let ref = response.data.current;
 				setW({
-					temp: ref.temp_c,
-					windSpeed: ref.wind_kph,
+					temp: ref.temperature,
+					windSpeed: ref.wind_speed,
 					direction: ref.wind_dir,
-					ico: ref.condition.icon,
-					icoAlt: ref.condition.text
+					ico: ref.weather_icons,
+					icoAlt: ref.weather_descriptions
 				});
 			});
 	}, [country.capital]);
