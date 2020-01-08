@@ -30,6 +30,13 @@ const App = () => {
 	const addPerson = event => {
 		event.preventDefault()
 
+		if (!newName.trim() || !newNumber.trim()) {
+			setErrorMessage(`Please fill the inputs`)
+			setTimeout(() => {
+				setErrorMessage(null)
+			}, 3000)
+			return
+		}
 		let isNew = true
 		persons.forEach(person => {
 			if (person.name === newName) {
@@ -72,11 +79,21 @@ const App = () => {
 					name: newName,
 					number: newNumber
 				})
-				.then(response => setPersons(persons.concat(response)))
-			setSuccessMessage(`Added ${newName}`)
-			setTimeout(() => {
-				setSuccessMessage(null)
-			}, 5000)
+				.then(response => {
+					setPersons(persons.concat(response))
+					setSuccessMessage(`Added ${newName}`)
+					setTimeout(() => {
+						setSuccessMessage(null)
+					}, 5000)
+				})
+				.catch(error => {
+					setErrorMessage(
+						error.response.data.error
+					)
+					setTimeout(() => {
+						setErrorMessage(null)
+					}, 5000)
+				})
 		}
 		setNewName("")
 		setNewNumber("")

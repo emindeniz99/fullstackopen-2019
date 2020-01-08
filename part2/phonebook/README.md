@@ -1,3 +1,7 @@
+Backend -> https://github.com/emindeniz99/phonebook-backend-fullstackopen-2019
+Heroku  https://desolate-forest-42573.herokuapp.com/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,5 +1,7 @@
 import axios from "axios"
-const baseUrl = "http://localhost:3001/persons"
+// const baseUrl = "http://localhost:3001/persons"
+const baseUrl = "/api/persons" // "/api/" added to use part3
+
 
 const getPersons = () => {
 	return axios.get(baseUrl).then(res => res.data)
